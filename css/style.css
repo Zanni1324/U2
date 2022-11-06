@@ -1,0 +1,514 @@
+@charset "UTF-8";
+
+html {
+    color: #495057;
+    font-size: 14px;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+}
+
+body, figure, figcaption, h1, h2, img, ol, p, ul {
+    margin: 0;
+    padding: 0;
+}
+
+/* 
+ *       + Google Fonts-ikoner:
+ *          https://fonts.google.com/icons?category=Sans+Serif,Display,Handwriting,Monospace 
+ *
+ */
+.material-icons.md-18 { font-size: 18px; }
+.material-icons.md-36 { font-size: 36px; }
+.material-icons.md-light { color: rgba(255, 255, 255, 1); }
+.material-icons.md-light.md-inactive { color: rgba(255, 255, 255, 0.3); }
+
+
+
+/* -------- Layout CSS-grid -------- */
+
+body {
+    /*height: 100vh;*/
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-template-rows: auto auto auto 1fr;
+    grid-template-areas: 
+        "global-nav"
+        "header"
+        "local-nav"
+        "main"
+    ;
+    background-color: #f8f9fa;
+}
+
+#global-nav { grid-area: global-nav; }
+
+header { grid-area: header; }
+
+#local-nav { grid-area: local-nav; }
+
+main { grid-area: main; }
+
+.fixed {
+    position: -webkit-sticky;
+    position: sticky;
+    top: 0;
+}
+
+
+
+/* -------- Allmänna stilar -------- */
+
+* { box-sizing: border-box; }
+
+a {
+    color: #048ba8;
+    font-weight: 600;
+}
+a:visited { color: #5a9dac; }
+a:hover, a:active { text-decoration: none; }
+
+figure {
+    margin-bottom: 1rem;
+    background-color: #f5cb5c;
+    border-radius: 0.5rem;
+    box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.05);
+    border: 1px solid rgba(0, 0, 0, 0.2);
+    border-top-width: 0.05rem;
+    border-bottom-width: 0.205rem;
+}
+
+figcaption {
+    padding: 0.2rem 0.5rem 0.5rem;
+    font-size: 0.8rem;
+}
+figcaption span {
+    color: #010101;
+    font-weight: bold;
+    text-transform: capitalize;
+}
+
+h1, h2 { padding: 0 1rem; }
+h1 { font-size: 2.5rem; }               /* 14 x 2.5 = 35 px */
+h2 { font-size: 1.286rem; }               /* 14 x 1.286 ~= 18 px */
+
+h1.long-title { font-size: 1.5rem; }    /* 14 x 1.5 = 21px */
+h2.long-title { font-size: 1.143rem;}   /* 14 x 1.143 ~= 16 px */
+
+img {
+    max-width: 100%;
+    border-radius: 0.5rem 0.5rem 0 0;
+}
+
+p { margin-bottom: 2rem; }
+
+
+
+/* -------- Global navigering -------- */
+
+#global-nav {
+    border-bottom: 0.5rem solid #121242;
+    background-color: #191970;
+    z-index: 99;
+    /*position: relative;*/
+}
+
+
+/* ---- Dropdown-meny ---- */
+
+#global-nav ul {
+    margin-top: 0.5rem;
+    position: absolute;
+    width: 100%;
+    height: calc(100vh - 7.357rem);
+    z-index: 100;
+    list-style: none;
+    background-color: #94e8b4;
+}
+
+#global-nav li {
+    height: 100%;
+    border-bottom: 0.25rem solid #82cc9e;
+}
+
+#global-nav a {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+    padding: 4rem;
+    color: #fff;
+    font-size: 1.5rem;          /* 14 x 1.5 = 21 px */
+    font-weight: 900;
+    text-align: center;
+    text-transform: uppercase;
+    text-decoration: none;
+    transition: all 300ms;
+}
+#global-nav a:hover { background-color: #c6ebd4; }
+#global-nav a.visiting {
+    opacity: 0.8; 
+    background-color: #c6ebd4; 
+}
+
+
+/* ---- Meny-knapp ---- */
+
+#menu-btn { display: none; }
+
+#menu-btn ~ label {
+    display: inline-block;
+    margin-left: 0.25rem;
+    padding: 2rem;
+    cursor: pointer;
+}
+
+#menu-btn ~ ul {
+    display: none;
+    opacity: 0;
+}
+#menu-btn:checked ~ ul {
+    display: flex;
+    flex-direction: column;
+    opacity: 1;
+    animation: growDown 300ms ease-out forwards;
+    transform-origin: top center;
+}
+
+
+/*  
+ *  Dropdown-meny animation
+ *      
+ *      hämtad från:
+ *          https://codinhood.com/micro/10-dropdown-menu-animations-css-transform
+ *
+ */
+@keyframes growDown {
+
+    0% {
+        transform: scaleY(0);
+    }
+
+    80% {
+        transform: scaleY(1.05);
+    }
+
+    100% {
+        transform: scaleY(1.0);
+    }
+
+}
+
+
+
+/* -------- Sidhuvud -------- */
+
+header { padding: 1rem 2.25rem 1.5rem; }
+
+header div {
+    margin: 3rem 0 1.25rem;
+    padding-top: 1rem;
+    position: relative;
+    border-top: 0.25rem solid #eee;
+}
+
+
+
+/* -------- Lokal navigering -------- */
+
+#local-nav { padding: 1rem 2.25rem; }
+
+#local-nav nav { height: 100%; }
+#local-nav nav ol {
+    display: flex;
+    flex-flow: column;
+    justify-content: center;
+    height: 100%;
+    list-style: none;
+}
+#local-nav nav li { flex-grow: 0; }
+
+#local-nav a {
+    display: block;
+    margin-bottom: 0.5rem;
+    padding: 1rem;
+    overflow: hidden;
+    border-radius: 0.5rem;
+    border: 1px solid rgba(0, 0, 0, 0.2);
+    border-top-width: 0.05rem;
+    border-bottom-width: 0.205rem;
+    box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.05);
+    color: #fff;
+    font-size: 1.25rem;     /* 14 x 1.25 = 17,5 px */
+    font-weight: 600;
+    text-align: center;
+    text-decoration: none;
+    background-color: #94e8b4;
+    transition: all 300ms;
+}
+#local-nav a:hover { background-color: #c6ebd4; }
+
+
+
+/* -------- Huvudinnehåll -------- */
+
+section { 
+    padding: 0 1.25rem 1rem;
+    overflow: hidden;
+}
+
+section:last-of-type {
+    min-height: calc(100vh - 280px);
+}
+
+section p {
+    padding-left: 0.75rem;
+    padding-right: 0.75rem;
+}
+section p, section figure {
+    max-width: 600px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.separator {
+    margin: 3rem 0;
+    padding-top: 1rem;
+    position: relative;
+    border-top: 0.25rem solid #eee;
+}
+
+.separator h1, 
+.separator h2, 
+.separator a {
+    position: absolute;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    line-height: 1;
+    text-align: center;
+    background-color: #f8f9fa;
+}
+.separator h1 { top: 0; }
+.separator h2 { top: 0; }
+.separator a {
+    padding: 0 1rem;
+    top: -1rem;
+    color: #495057;
+    font-size: 1.143rem;
+    text-decoration: none;
+}
+
+main .separator {
+    margin-left: 2.25rem;
+    margin-right: 2.25rem;
+}
+
+.chapter {
+    position: absolute;
+    top: -120px;
+}
+
+p > .spacer {
+    content: "";
+    display: block;
+    margin-bottom: 1rem;
+}
+
+
+
+/* -------- Responsiv layout -------- */
+
+
+/*  
+ *  Skärmbredd ner till 360px:
+ *      
+ *      + öka textstorlek på underrubrik samt
+ *          på lång huvud- och underrubrik
+ *
+ */
+ @media screen and (min-width: 360px) {
+
+    h2 { font-size: 1.5rem; }
+
+    h1.long-title { font-size: 2rem; }
+    h2.long-title { font-size: 1.286rem; }
+    
+}
+
+
+/*  
+ *  Skärmbredd ner till 500px:
+ *      
+ *      + öka textstorlek på lång underrubrik
+ *      + öka textstorlek på huvud- och undermeny
+ *
+ */
+@media screen and (min-width: 500px) {
+
+    h2.long-title { font-size: 1.5rem;}
+
+    #global-nav a { font-size: 2rem; }
+}
+
+
+/*  
+ *  Skärmbredd ner till 600px eller i landskap:
+ *      
+ *      + öka textstorlek på huvudmeny
+ *      + ändra orientering av undermenyn från 
+ *          vertikal till horisontell
+ *
+ */
+@media screen and (orientation: landscape), (min-width: 600px) {
+
+    #global-nav a { font-size: 2.5rem; }
+    
+    #local-nav nav ol {
+        padding-bottom: 1.5rem; 
+        flex-direction: row;
+        gap: 0.5rem;
+        justify-content: space-evenly;
+    }
+    #local-nav nav li { flex: 1 1 0px; }
+
+}
+
+
+/*  
+ *  Skärmbredd ner till 700px:
+ *      
+ *      + öka textstorlek på huvud- och underrubrik
+            detsamma för långa rubriker
+ *      + ta bort dropdown för huvudmeny och 
+ *          placera den direkt i toppen av sidan
+ *
+ */
+@media screen and (min-width: 700px)  {
+    
+    h1 { font-size: 4rem; }
+    
+    h1.long-title { font-size: 2.5rem;}
+
+    h2, 
+    h2.long-title { font-size: 2rem; }
+
+    #global-nav {
+        display: flex;
+        justify-content: center;
+    }
+
+    #global-nav ul {
+        flex-basis: 960px;
+        height: unset;
+        padding: calc(3rem + 18px) 6rem 1rem 6rem;
+        align-items: center;
+    }
+
+    #global-nav li { border: none; }
+
+    #global-nav a {
+        display: block;
+        margin-right: 1.5rem;
+        padding: 0;
+        opacity: 0.4;
+        color: #e5e5f0;
+        font-size: 1.25rem;
+        text-transform: unset;
+        text-align: unset;
+    }
+    #global-nav a:hover, 
+    #global-nav a:active, 
+    #global-nav a.visiting {
+        opacity: 1;
+        background: none;
+    }
+    #global-nav a.visiting { color: #f5cb5c; }
+
+    #menu-btn ~ ul {
+        display: flex;
+        opacity: 1;
+        margin: 0;
+        position: unset;
+        background: none;
+    }
+
+    #menu-btn ~ label {
+        display: none;
+        cursor: default;
+    }
+
+    #local-nav a { font-size: 1.5rem; }
+    
+}
+
+
+/*  
+ *  Skärmbredd ner till 800px:
+ *      
+ *      + lägg till marginaler i höger- och vänsterkant
+ *          (3 kolumner) och centrera innehållet i mittenspalten
+ *      + dela upp huvudinnehållet i två spalter
+ *
+ */
+@media screen and (min-width: 800px) {
+
+    body {
+        grid-template-columns: 1fr minmax(0, 960px) 1fr;
+        grid-template-rows: auto auto auto 1fr;
+        grid-template-areas: 
+            "global-nav global-nav  global-nav"
+            ".......... header      .........."
+            ".......... local-nav   .........."
+            ".......... main        .........."
+        ;
+    }
+
+    section {
+        -webkit-column-count: 2;
+        -moz-column-count: 2;
+        column-count: 2;
+    }
+
+    #global-nav ul { padding-top: 4rem; }
+
+}
+
+
+/*  
+ *  Skärmbredd ner till 1000px:
+ *      
+ *      + placera undermenyn i en egen spalt
+ *          (total 4 kolumner) och orientera
+ *           menyn vertikalt
+ *
+ */
+@media screen and (min-width: 1000px) {
+
+    body {
+        grid-template-columns: 1fr minmax(0, 740px) 260px 1fr;
+        grid-template-rows: auto auto 1fr;
+        grid-template-areas:
+            "global-nav global-nav  global-nav  global-nav"
+            ".......... header      local-nav   .........."
+            ".......... main        local-nav   .........."
+        ;
+    }
+
+    #local-nav {
+        margin-top: 14.75rem;
+        padding: 0;
+    }
+
+    #local-nav nav {
+        height: auto;
+        padding: 2.25rem 1rem;
+        border-left: 0.25rem solid #eee;
+    }
+
+    #local-nav nav ol {
+        flex-direction: column;
+        height: auto;
+        padding-bottom: 0;
+    }
+
+    #local-nav a { font-size: 1.286rem; }
+    
+}

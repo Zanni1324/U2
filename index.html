@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Webbteknik - Uppgift 2 :: Layout</title>
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link href="css/style.css" rel="stylesheet">
+</head>
+<body id="page-top">
+    <nav id="global-nav" class="fixed">
+        <input type="checkbox" id="menu-btn" />
+        <label for="menu-btn">
+            <span class="material-icons md-36 md-light">menu</span>
+        </label>
+        <ul>
+            <li><a class="visiting" href="index.html">Layout</a></li>
+            <li><a href="navigering.html">Navigering</a></li>
+            <li><a href="malgrupp-krav.html">Målgruppsanalys & kravspecifikation</a></li>
+        </ul>
+    </nav>
+
+    <header>
+        <div class="separator">
+            <h1 class="long-title">Layout</h1>
+        </div>
+    </header>
+
+    <aside id="local-nav">
+
+        <nav>
+            <ol>
+                <li><a href="#grid-template">Grid Template</a></li>
+                <li><a href="#media-query">Media Queries</a></li>
+            </ol>
+        </nav>
+
+    </aside>
+
+    <main>
+        
+        <div class="separator">
+            <div id="grid-template" class="chapter"></div>
+            <h2 class="long-title">Grid Template</h2>
+        </div>
+
+        <section>
+
+            <p><em>Då man skapar en layout med grid används bl.a. CSS-egenskaper <strong>grid-template-columns</strong>, <strong>grid-template-rows</strong> och <strong>grid-template-areas</strong>. Beskriv vad dessa används till.</em></p>
+
+            <p>För att anpassa mätningar på kolumner med mall egenskaper skapat i CSS kan man använda sig av olika anpassningar. Två specifikationer som kan användas i detta syfte är grid-template-rows (som specificerar höjderna på varje kolumn) och grid-template-columns (som specificerar bredderna på varje kolumn). På bilden visas hur första kolumnen tilldelas siffran 1 och det sista spåret tilldelas siffran -1 och räknas fortsättningsvis baklänges, det vill säga -2, -3 etc.</p> 
+            
+            <p>Man kan också namnge områden genom att använda sig av grid-template-areas. Varje cell i rutnätet tilldelas då ett namn som listas inom citationstecken rad för rad. Närliggande celler med samma namn bildar ett område i rutnätet. Ett rutnät som ska bestå av tre kolumner måste ha tre olika namn för att bilda tre separata kolumner. Man kan även lämna en cell namnlös genom att skriva en eller flera punkter (.) för att fylla utrymmet och således få med varje cell. Främst används grid-template-area för att man lätt skall kunna placera ut objekt i layouten vid ett senare skede. 
+            </p>
+
+        </section>
+        
+        <div class="separator">
+            <div id="media-query" class="chapter"></div>
+            <h2>Media Queries</h2>
+        </div>
+
+        <section>
+
+            <p><em>Vad är en <strong>media query</strong> och vad används den till?</em></p>
+
+            <p>De finns ett flertal steg som används för att skapa en responsiv design en av dessa steg är media query som används för att skapa förändringar i form av stilregler som behövs för att anpassa layouten för olika storlek på webbläsarens fönster. När man arbetar med responsiv design kan det vara bra att visualisera layouten med hjälp av skisser. Media queries används för att sätta ut gränser i layouten. På så sätt anpassas sidans innehåll efter tillskrivna nya regler när en gräns för det tidigare innehållet passeras. Ett exempel kan vara att man anpassar en webbsidas bredd till en smalare layout med en bredd på 600 pixlar. Då kan man anpassa webbplatsens innehåll med media queries som skapar nya regler för den alternativa webblayout som skapas när man passerar en gräns på en bredd på 600 pixlar. När man gör om koden på detta vis måste man utgå från den de regler som man använt i den ursprungliga layouten. Man markerar således ut de regler som man vill anpassa till den nya layouten. Ett exempel på en media query som skapats för att göra layouten responsiv kan ses i bild 1. Anpassningar kan ske genom elegant nedbrytning eller gradvis utökning.</p>
+
+            <figure>
+                <a href="img/media-queries.png">
+                    <img src="img/media-queries.png" alt="Media queries" >
+                </a>
+                <figcaption><span>Bild 1.</span> Bilden visar på hur man kan skapa en media querie för att göra layouten responsive efter den passerat ett visst gränsvärde</figcaption>
+            </figure>
+
+        </section>
+
+        <div class="separator">
+            <a href="#page-top">
+            <span class="material-icons md-18">
+                keyboard_arrow_up
+                </span><br>till toppen</a>
+        </div>
+
+    </main>
+    
+</body>
+</html>
